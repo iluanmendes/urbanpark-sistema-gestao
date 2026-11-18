@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 
 namespace backUrbanPark.Repository
 {
-    internal class Banco
+    public static class Banco
     {
 
         // String de conexão com os dados do servidor MySQL/MariaDB
-        private static readonly string stringDeConexao = "Server=192.168.0.166;Port=3306;Database=db_urbanpark;Uid=admin;Pwd=12345678";
+        private static readonly string stringDeConexao = "Server=10.91.45.36;Port=3306;Database=urbanpark;Uid=admin;Pwd=12345678";
 
         /// <summary>
         /// Testa a conexão com o banco de dados e exibe a versão atual.
@@ -46,6 +46,7 @@ namespace backUrbanPark.Repository
             }
         }
 
+       
         /// <summary>
         /// Executa comandos que modificam dados (INSERT, UPDATE, DELETE).
         /// Retorna a quantidade de linhas afetadas ou -1 em caso de erro.
