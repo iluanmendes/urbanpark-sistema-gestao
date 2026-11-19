@@ -9,7 +9,7 @@ namespace backUrbanPark
         static void Main(string[] args)
         {
 
-            Banco.TestarConexao();
+           
         }
     }
 
