@@ -64,7 +64,6 @@ namespace backUrbanPark.Repository
 
                         vagas.Add(MapearVaga(reader));
                     }
-
                 }
             }
             return vagas;
@@ -75,7 +74,6 @@ namespace backUrbanPark.Repository
         /// </summary>
         /// <param name="reader"></param>
         /// <returns></returns>
-
         private Vaga MapearVaga(MySqlDataReader reader) {
 
             int id_vaga = reader.GetInt32("id_vaga");
