@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace backUrbanPark.Repository
 {
-    public class VagaRepository
+    public static class VagaRepository
     {
 
        
@@ -17,7 +17,7 @@ namespace backUrbanPark.Repository
         /// </summary>
         /// <param name="vaga"></param>
         /// <returns></returns>
-        public int Inserir(Vaga vaga)
+        public static int Inserir(Vaga vaga)
         {
             return 1;
         }
@@ -27,7 +27,7 @@ namespace backUrbanPark.Repository
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public Vaga? ListarPorId(int id) {
+        public static Vaga? ListarPorId(int id) {
             string sql = "SELECT id_vaga, numero_vaga, tipo, status FROM vagas WHERE id = @id";
 
             using (var cmd = new MySqlCommand(sql))
@@ -50,7 +50,7 @@ namespace backUrbanPark.Repository
         /// Retorna todas as vagas cadastradas
         /// </summary>
         /// <returns></returns>
-        public List<Vaga> ListarTodas() {
+        public static List<Vaga> ListarTodas() {
 
             string sql = "SELECT id_vaga, numero_vaga, tipo, status FROM vagas";
 
@@ -74,7 +74,7 @@ namespace backUrbanPark.Repository
         /// </summary>
         /// <param name="reader"></param>
         /// <returns></returns>
-        private Vaga MapearVaga(MySqlDataReader reader) {
+        private static Vaga MapearVaga(MySqlDataReader reader) {
 
             int id_vaga = reader.GetInt32("id_vaga");
             int numero_vaga = reader.GetInt32("numero_vaga");
