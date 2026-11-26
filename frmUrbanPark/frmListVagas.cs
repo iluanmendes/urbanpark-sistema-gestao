@@ -27,15 +27,16 @@ namespace frmUrbanPark
 
         private void carregarDadosEMontarVisualizacao()
         {
-           
+
             List<Vaga> listaDevagas = VagaRepository.ListarTodas();
 
             flwCardVagas.Controls.Clear();
 
-            foreach (Vaga vaga in listaDevagas) {
-                
+            foreach (Vaga vaga in listaDevagas)
+            {
+
                 string strNumeroVaga = vaga.Numero_vaga.ToString();
-                StatusVaga statusVaga =  Enum.Parse<StatusVaga>(vaga.TipoStatus.ToString());
+                StatusVaga statusVaga = Enum.Parse<StatusVaga>(vaga.TipoStatus.ToString());
                 int idVaga = vaga.Id;
 
                 ctrStatusVagas cardVaga = new ctrStatusVagas();
@@ -44,13 +45,37 @@ namespace frmUrbanPark
                 cardVaga.StatusVaga = statusVaga;
                 cardVaga.NumeroVaga = strNumeroVaga;
 
-                flwCardVagas.Controls.Add(cardVaga);            
-            }
+                cardVaga.CardClicado += cardVaga_click;
 
+                flwCardVagas.Controls.Add(cardVaga);
+            }
+        }
+
+        public void cardVaga_click(object sender, EventArgs e)
+        {
+            ctrStatusVagas cardSelecionado = (ctrStatusVagas)sender;
+
+            MessageBox.Show($"Vaga: {cardSelecionado.NumeroVaga} || Status: {cardSelecionado.StatusVaga}");
 
 
         }
 
 
+        private void flwCardVagas_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_MouseHover(object sender, EventArgs e)
+        {
+            Button b = (Button)sender;
+
+            MessageBox.Show(b.Text);
+        }
     }
 }
