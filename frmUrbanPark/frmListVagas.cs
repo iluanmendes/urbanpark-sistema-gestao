@@ -7,6 +7,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reflection.Metadata.Ecma335;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -55,9 +56,23 @@ namespace frmUrbanPark
         {
             ctrStatusVagas cardSelecionado = (ctrStatusVagas)sender;
 
-            MessageBox.Show($"Vaga: {cardSelecionado.NumeroVaga} || Status: {cardSelecionado.StatusVaga}");
+            if (cardSelecionado.StatusVaga == StatusVaga.Livre) {
+                
+                // Inicializa o formulário de entrada e passa as informações da vaga.
+                frmRegistrarEntrada frmEntrada = new frmRegistrarEntrada(
+                    cardSelecionado.NumeroVaga,
+                    cardSelecionado.IdVaga
+                );
 
+                frmEntrada.ShowDialog();
 
+            }else
+            {
+                frmRegistrarSaida frmSaida = new frmRegistrarSaida();
+
+                frmSaida.ShowDialog();
+
+            }
         }
 
 
